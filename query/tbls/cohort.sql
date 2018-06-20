@@ -105,4 +105,8 @@ select
             then 1
         else 0 end as excluded
 from t1
+
+-- To retrieve sepsis patients only based on Sepsis-3 definition use this query:
+-- select * from sepsis3 s left join  sepsis3_cohort c using (icustay_id) where
+-- c.excluded=0 and c.suspected_of_infection_poe=1 and s.sofa>=2 limit 2
 order by t1.icustay_id;
